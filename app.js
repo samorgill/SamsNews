@@ -1,9 +1,19 @@
 var app = angular.module('samsNews', []);
 
+app.factory('posts', [function(){
+    var o = {
+        posts: []
+    };
+    return o;
+}])
+
 app.controller('MainCtrl', [
     '$scope',
+    'posts',
     function($scope){
         $scope.test = 'Hello world!';
+
+        $scope.posts = posts.posts;
 
         $scope.posts = [
             {title: 'post 1', upvotes: 5},
@@ -14,7 +24,22 @@ app.controller('MainCtrl', [
         ];
 
         $scope.addPost = function(){
-            $scope.posts.push({title: 'A new post!', upvotes: 0});
+            if(!$scope.title || $scope.title === ''){return;}
+            $scope.posts.push({
+                title: $scope.title,
+                link: $scope.link,
+                upvotes: 0 });
+
+            $scope.title = '';
+            $scope.link = '';
+        };
+
+        $scope.incrementUpvotes = function(post){
+            post.upvotes += 1;
+        };
+
+        $scope.decreaseVotes = function(post){
+            post.upvotes -= 1;
         };
 
     }]);
