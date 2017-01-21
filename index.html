@@ -3,13 +3,16 @@
     <title>My Angular App!</title>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
     <script src="app.js"></script>
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
     <style> .glyphicon-thumbs-down { cursor:pointer } </style>
   </head>
-  <body ng-app="samsNews" ng-controller="MainCtrl">
+  <body ng-app="samsNews">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            <ui-view></ui-view>
+            <script type="text/ng-template" id="/home.html">
             <div class="page-header">
                 <h1>Sams News</h1>
             </div>
@@ -53,5 +56,6 @@
       </form>
         </div>
     </div>
+            </script>
   </body>
 </html>
